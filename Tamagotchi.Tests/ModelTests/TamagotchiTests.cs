@@ -148,5 +148,17 @@ namespace TamagotchiProject.Tests
       Assert.AreEqual(expected,newTamagotchi1.Food);
       Assert.AreEqual(expected,newTamagotchi2.Food);
     }
+
+    [TestMethod]
+    public void Find_LocatesItemInInstancesThatMatchesSpecifiedId_Tamagotchi()
+    {
+      string name01 = "Work";
+      string name02 = "School";
+      Tamagotchi newTamagotchi1 = new Tamagotchi(name01,3,4,5);
+      Tamagotchi newTamagotchi2 = new Tamagotchi(name02,3,4,5);
+      Tamagotchi result = Tamagotchi.Find(2);
+      Assert.AreEqual(newTamagotchi2, result);
+    }
+    
   }
 }

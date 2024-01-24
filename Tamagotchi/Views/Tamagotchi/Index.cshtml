@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tamagotchi!</title>
+  </head>
+  <body>
+    
+    @using TamagotchiProject.Models;
+
+    <h1>Welcome !</h1>
+    <ul>
+      @foreach (Tamagotchi tamagotchi in Model)
+      {
+        <li>
+        <a href='/tamagotchi/@tamagotchi.Id'>@tamagotchi.Name</a>
+        </li>
+      }
+
+    </ul>
+    <a href='/tamagotchi/new'>Click here to make a new Tamagotchi!</a>
+  </body>
+</html>

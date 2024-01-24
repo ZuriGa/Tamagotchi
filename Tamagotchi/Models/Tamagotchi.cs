@@ -60,5 +60,10 @@ namespace TamagotchiProject.Models
       }
     }
 
+    public static Tamagotchi Find(int searchId)
+    {
+      return _instances[searchId-1];
+    }
+
   }
 }
