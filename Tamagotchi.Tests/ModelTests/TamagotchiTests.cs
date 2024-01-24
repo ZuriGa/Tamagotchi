@@ -6,8 +6,13 @@ using System;
 namespace TamagotchiProject.Tests
 {
   [TestClass]
-  public class TamagotchiTest
+  public class TamagotchiTest : IDisposable
   {
+    public void Dispose()
+    {
+      Tamagotchi.ClearAll();
+    }
+
     [TestMethod]
     public void TamagotchiConstructor_CreatesInstanceOfTamagotchi_Tamagotchi()
   {
@@ -69,6 +74,68 @@ namespace TamagotchiProject.Tests
       newTamagotchi.Attention = attention;
       int result = newTamagotchi.Attention;
       Assert.AreEqual(attention, result);
+    }
+
+    [TestMethod]
+    public void SetRest_SetsRest_Int()
+    {
+      int rest = 85;
+      Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",0,4,5);
+      newTamagotchi.Rest = rest;
+      int result = newTamagotchi.Rest;
+      Assert.AreEqual(rest, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllTamagotchiInstances_List()
+    {
+      // Arrange
+      Tamagotchi t1 = new Tamagotchi("Test Tamagotchi",0,4,5);
+      Tamagotchi t2 = new Tamagotchi("Test Tamagotchi",0,4,5);
+      Tamagotchi t3 = new Tamagotchi("Test Tamagotchi",0,4,5);
+      List<Tamagotchi> expected = new List<Tamagotchi> { t1, t2, t3 };
+      // Act
+      List<Tamagotchi> actualResult = Tamagotchi.GetAll();
+      // Assert
+      CollectionAssert.AreEqual(expected, actualResult);
+    }
+
+    [TestMethod]
+    public void GetId_ReturnTamagotchiId_Int()
+    {
+      
+      Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",0,4,5);
+      int result = newTamagotchi.Id;
+      Assert.AreEqual(1, result);
+    }
+
+    [TestMethod]
+    public void GetDie_ReturnsDie_Bool()
+    {
+      bool expected = false;
+      Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",3,4,5);
+      bool result = newTamagotchi.Die;
+      Assert.AreEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void SetDie_ReturnsDie_Bool()
+    {
+      bool expected = true;
+      Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",3,4,5);
+      newTamagotchi.Die = true;
+      bool result = newTamagotchi.Die;
+      Assert.AreEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void CheckLevels_SetsDieToTrueIfFoodOrAttentionOrRestAre0_Void()
+    {
+      Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",3,4,5);
+      newTamagotchi.Rest = 0;
+      newTamagotchi.CheckLevels();
+      bool expected = true;
+      Assert.AreEqual(expected,newTamagotchi.Die);
     }
   }
 }
