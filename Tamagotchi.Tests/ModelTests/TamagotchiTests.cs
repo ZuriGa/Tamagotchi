@@ -11,7 +11,7 @@ namespace TamagotchiProject.Tests
     [TestMethod]
     public void TamagotchiConstructor_CreatesInstanceOfTamagotchi_Tamagotchi()
   {
-    Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",1);
+    Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",1,2);
     Assert.AreEqual(typeof(Tamagotchi), newTamagotchi.GetType());
   }
   
@@ -19,7 +19,7 @@ namespace TamagotchiProject.Tests
     public void GetName_ReturnsName_String()
     {
       string name = "Test Tamagotchi";
-      Tamagotchi newTamagotchi = new Tamagotchi(name,2);
+      Tamagotchi newTamagotchi = new Tamagotchi(name,2,3);
       string result = newTamagotchi.Name;
       Assert.AreEqual(name, result);
     }
@@ -28,9 +28,18 @@ namespace TamagotchiProject.Tests
     public void GetFood_ReturnsFood_Int()
     {
       int food = 100;
-      Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",food);
+      Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",food,3);
       int result = newTamagotchi.Food;
       Assert.AreEqual(food, result);
+    }
+
+    [TestMethod]
+    public void GetAttention_ReturnsAttention_Int()
+    {
+      int attention = 100;
+      Tamagotchi newTamagotchi = new Tamagotchi("Test Tamagotchi",3,attention);
+      int result = newTamagotchi.Attention;
+      Assert.AreEqual(attention, result);
     }
   }
 }
