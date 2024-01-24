@@ -50,5 +50,15 @@ namespace TamagotchiProject.Models
       }
     }
 
+    public static void DecreaseLevels()
+    {
+      foreach (Tamagotchi tamagotchi in _instances)
+      {
+        tamagotchi.Food -= 1;
+        tamagotchi.Attention -= 1;
+        tamagotchi.Rest -= 1;
+      }
+    }
+
   }
 }

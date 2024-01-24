@@ -137,5 +137,16 @@ namespace TamagotchiProject.Tests
       bool expected = true;
       Assert.AreEqual(expected,newTamagotchi.Die);
     }
+
+    [TestMethod]
+    public void DecreaseLevels_DecreasesLevelsOfAllInstancesBy1_Void()
+    {
+      Tamagotchi newTamagotchi1 = new Tamagotchi("Test Tamagotchi",3,4,5);
+      Tamagotchi newTamagotchi2 = new Tamagotchi("Test Tamagotchi",3,4,5);
+      Tamagotchi.DecreaseLevels();
+      int expected = 2;
+      Assert.AreEqual(expected,newTamagotchi1.Food);
+      Assert.AreEqual(expected,newTamagotchi2.Food);
+    }
   }
 }
