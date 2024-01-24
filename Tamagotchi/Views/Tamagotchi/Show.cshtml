@@ -15,7 +15,7 @@
 
     <h2>@Model.Name</h2>
 
-    <ol>
+    <div>
       <li>Dead? @Model.Die</li>
       <li>Food Level: @Model.Food</li>
       <form action="/tamagotchi/@Model.Id/feed" method="post">
@@ -30,7 +30,7 @@
         <button type="submit" name="button">Nap time!</button>
       </form>
 
-    </ol>
+    </div>
 
     @using TamagotchiProject.Models;
 

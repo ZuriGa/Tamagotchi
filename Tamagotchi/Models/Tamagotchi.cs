@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace TamagotchiProject.Models
 {
@@ -39,17 +40,16 @@ namespace TamagotchiProject.Models
 
     public void CheckLevels()
     {
-      if (Food < 1)
+      if (Food < 1 || Attention < 1 || Rest < 1)
       {
+        Food = 0;
+        Attention = 0;
+        Rest = 0;
         Die = true;
       }
-      else if (Attention < 1)
+      else
       {
-        Die = true;
-      }
-      else if (Rest < 1)
-      {
-        Die = true;
+        Die = false;
       }
     }
 
@@ -106,6 +106,7 @@ namespace TamagotchiProject.Models
           {
             tamagotchi.CheckLevels();
           }
+          // Redirect(HttpContext.Current.Request.Url.ToString(), true);
         }
       }
       finally
