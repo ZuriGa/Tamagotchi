@@ -7,6 +7,7 @@ namespace TamagotchiProject.Controllers
 {
   public class TamagotchiController : Controller
   {
+
     [HttpGet("/tamagotchi")]
     public ActionResult Index()
     {
@@ -34,22 +35,30 @@ namespace TamagotchiProject.Controllers
     }
 
     [HttpPost("/tamagotchi/{id}/feed")]
-    public ActionResult Show(int id, string action)
+    public ActionResult Show(int id, bool feed)
     {
       Tamagotchi foundTamagotchi = Tamagotchi.Find(id);
       foundTamagotchi.Food += 1;
-      Console.WriteLine("fed");
-      if (action == "food")
-      {
-        
-      }
+      return View(foundTamagotchi);
+    }
+
+    [HttpPost("/tamagotchi/{id}/play")]
+    public ActionResult Show(int id, int play)
+    {
+      Tamagotchi foundTamagotchi = Tamagotchi.Find(id);
+      foundTamagotchi.Attention += 1;
       return View(foundTamagotchi);
     }
     
+    [HttpPost("/tamagotchi/{id}/rest")]
+    public ActionResult Show(int id, string rest)
+    {
+      Tamagotchi foundTamagotchi = Tamagotchi.Find(id);
+      foundTamagotchi.Rest += 1;
+      return View(foundTamagotchi);
+    }
   }
 }
-
-
 
 
 

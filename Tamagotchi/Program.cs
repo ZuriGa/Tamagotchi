@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using TamagotchiProject.Models;
 
-namespace ProjectName
+namespace TamagotchiProject
 {
   class Program
   {
@@ -22,7 +23,6 @@ namespace ProjectName
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}"
       );
-
       app.Run();
     }
   }

@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace TamagotchiProject.Models
 {
@@ -21,9 +24,9 @@ namespace TamagotchiProject.Models
     public int Rest { get; set; }
     public int Id { get; }
     public bool Die { get; set; }
-    private static List<Tamagotchi> _instances = new List<Tamagotchi> {};
+    private static List<Tamagotchi> _instances = new List<Tamagotchi> { };
 
-    
+
     public static List<Tamagotchi> GetAll()
     {
       return _instances;
@@ -36,15 +39,15 @@ namespace TamagotchiProject.Models
 
     public void CheckLevels()
     {
-      if (Food == 0)
+      if (Food < 1)
       {
         Die = true;
       }
-      else if (Attention == 0)
+      else if (Attention < 1)
       {
         Die = true;
       }
-      else if (Rest == 0)
+      else if (Rest < 1)
       {
         Die = true;
       }
@@ -62,8 +65,60 @@ namespace TamagotchiProject.Models
 
     public static Tamagotchi Find(int searchId)
     {
-      return _instances[searchId-1];
+      return _instances[searchId - 1];
     }
+
+    // public static async Task TimerStart()
+    // {
+    //   var timer = new PeriodicTimer(TimeSpan.FromSeconds(10));
+
+    //   while (await timer.WaitForNextTickAsync())
+    //   {
+    //     // Console.WriteLine("Hello World after 10 seconds");
+    //     DecreaseLevels();
+    //   }
+    // }
+
+    private static bool isTimerRunning = false;
+    private static readonly object lockObject = new object();
+
+    public static async Task TimerStart()
+    {
+      lock (lockObject)
+      {
+        if (isTimerRunning)
+        {
+          // Timer is already running, exit
+          return;
+        }
+
+        isTimerRunning = true;
+      }
+
+      try
+      {
+        var timer = new PeriodicTimer(TimeSpan.FromSeconds(10));
+
+        while (await timer.WaitForNextTickAsync())
+        {
+          DecreaseLevels();
+          foreach (Tamagotchi tamagotchi in _instances)
+          {
+            tamagotchi.CheckLevels();
+          }
+        }
+      }
+      finally
+      {
+        // Ensure to reset the flag when the timer is done or an exception occurs
+        isTimerRunning = false;
+      }
+    }
+
+    //   public static void StartTimer() {
+    //     Timer t = new Timer(TimerCallback, null, 0, 1000);
+    //     Console.ReadLine();
+    //  }
 
   }
 }

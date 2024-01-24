@@ -16,15 +16,19 @@
     <h2>@Model.Name</h2>
 
     <ol>
-      <li>Alive? @Model.Die</li>
+      <li>Dead? @Model.Die</li>
       <li>Food Level: @Model.Food</li>
       <form action="/tamagotchi/@Model.Id/feed" method="post">
         <button type="submit" name="button">Feed Me!</button>
       </form>
       <li>Attention Level: @Model.Attention</li>
- 
+      <form action="/tamagotchi/@Model.Id/play" method="post">
+        <button type="submit" name="button">Play with Me!</button>
+      </form>
       <li>Sleep Level: @Model.Rest</li>
-      
+      <form action="/tamagotchi/@Model.Id/rest" method="post">
+        <button type="submit" name="button">Nap time!</button>
+      </form>
 
     </ol>
 
