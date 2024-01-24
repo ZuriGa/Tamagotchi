@@ -4,14 +4,39 @@
 
 .tamagotchiHolder {
   display: inline-block;
+  position: relative;
 }
 
 .list-container {
   position: absolute;
-  top: 50%;
+  top: 36%;
   left: 50%;
   transform: translate(-50%, -50%); 
 }
+
+.tamagotchiButtonHolderA {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-evenly;
+  /* padding: 30px; */
+}
+
+.tamagotchiButtonHolderB {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  /* padding: 20px; */
+}
+
+.headersDiv {
+  text-align: center;
+}
+
 
 /* body {
   background-color: aqua;
