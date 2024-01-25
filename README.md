@@ -55,7 +55,7 @@ dotnet test
 
 ## Known Bugs
 
-* _Current bug won't let you go back to confirm order._
+* _No known bugs._
 
 
 ## License

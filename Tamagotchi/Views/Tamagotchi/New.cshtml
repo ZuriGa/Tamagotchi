@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Tamagotchi!</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
     <link 
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
       rel="stylesheet" 
@@ -10,16 +11,18 @@
       crossorigin="anonymous">
   </head>
   <body>
-    <h1>Add a Tamagotchi</h1>
-    <p>Add a name here:</p>
+    <h1>Add your Tamagotchi</h1>
 
-    <form action="/tamagotchi" method="post">
-      <label for="tamagotchiName">Tamagotchi name</label>
-      <input id="tamagotchiName" name="tamagotchiName" type="text">
-      <button type="submit">Add</button>
-    </form>
-
-    <p><a href="/">Back home</a></p>
-    <p><a href="/tamagotchi">Back to all Tamagotchis.</a></p>
+    <div class="flex-container">
+      <div class="form-container">
+        <form action="/tamagotchi" method="post">
+        <label for="tamagotchiName">Name your pet</label>
+        <input id="tamagotchiName" name="tamagotchiName" type="text">
+        <button type="submit">Add</button>
+      </form>
+    </div>
+    <p><a href="/"><button>Back home</button></a></p>
+    <p><a href="/tamagotchi"><button>Back to all Tamagotchis.</button></a></p>
+    </div>
   </body>
 </html>

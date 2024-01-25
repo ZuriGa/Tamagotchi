@@ -23,7 +23,7 @@ namespace TamagotchiProject.Controllers
     [HttpPost("/tamagotchi")]
     public ActionResult Create(string tamagotchiName)
     {
-      Tamagotchi newTamagotchi = new Tamagotchi(tamagotchiName,20,20,20);
+      Tamagotchi newTamagotchi = new Tamagotchi(tamagotchiName,100,100,100);
       return RedirectToAction("Index");
     }
 
