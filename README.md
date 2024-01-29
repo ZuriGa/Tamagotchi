@@ -24,7 +24,6 @@
 * Clone the repository by running the following command to your desktop:
 
 ```bash
-git clone https://github.com/MonBoza/Parcels.git
 ```
 
 * Make sure .gitignore is added to the repository.
